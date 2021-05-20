@@ -8,12 +8,12 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
-        
+
       - name: Docker buildx
         uses: docker/build-push-action@v2
         with:
           context: ./docker
-          file: Dockerfile
+          file: ./docker/Dockerfile
           push: false
           tags: |
             ghcr.io/ingokofler/pandoc4all:latest
