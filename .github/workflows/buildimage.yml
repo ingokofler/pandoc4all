@@ -6,7 +6,9 @@ jobs:
   BuildAndTest:
     runs-on: ubuntu-20.04
     steps:
-
+      - name: Checkout source code
+        uses: actions/checkout@v2
+        
       - name: Docker buildx
         uses: docker/build-push-action@v2
         with:
