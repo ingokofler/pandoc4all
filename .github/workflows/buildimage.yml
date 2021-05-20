@@ -10,7 +10,7 @@ jobs:
       - name: Docker buildx
         uses: docker/build-push-action@v2
         with:
-          context: docker
+          context: ./docker
           file: Dockerfile
           push: false
           tags: |
