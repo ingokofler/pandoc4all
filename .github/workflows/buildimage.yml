@@ -1,0 +1,17 @@
+name: Build Container Image
+
+on: [push]
+
+jobs:
+  BuildAndTest:
+    runs-on: ubuntu-20.04
+    steps:
+
+      - name: Docker buildx
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: |
+            ghcr.io/ingokofler/pandoc4all:latest
