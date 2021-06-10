@@ -56,7 +56,7 @@ Linux
 
 ```shell
 docker run -it -v /your/path/here/examples:/data \
-           foo \
+           pandoc4all \
            use-case-diagrams.md \
            -t revealjs \
            --section-divs  -V theme=sky -V transition=slide \
