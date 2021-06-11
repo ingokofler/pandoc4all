@@ -22,4 +22,6 @@ RUN chmod a+x /usr/bin/plantuml
 # download and integrate eisvogel template
 RUN mkdir -p /opt/eisvogel && \
     echo "${EISVOGEL_VERSION}" >/opt/eisvogel/version \
-    wget -O /opt/eisvogel/eisvogel.tex "https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/v${EISVOGEL_VERSION}/eisvogel.tex"
+    wget -O /opt/eisvogel/eisvogel.tex "https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/v${EISVOGEL_VERSION}/eisvogel.tex" \
+    mkdir -p /root/.pandoc/templates \
+    ln -s /opt/eisvogel/eisvogel.tex /root/.pandoc/templates/eisvogel.tex
