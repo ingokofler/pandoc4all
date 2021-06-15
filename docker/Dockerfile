@@ -19,9 +19,34 @@ RUN mkdir -p /opt/plantuml && \
 ADD plantuml /usr/bin/plantuml
 RUN chmod a+x /usr/bin/plantuml
 
+# add additional tex packages for Eisvogel template
+# taken from https://github.com/rstropek/pandoc-latex/blob/master/Dockerfile
+RUN tlmgr update --self && \
+    tlmgr install \
+    merriweather \
+    fontaxes \
+    mweights \
+    mdframed \
+    needspace \
+    sourcesanspro \
+    sourcecodepro \
+    titling \
+    ly1 \
+    pagecolor \
+    adjustbox \
+    collectbox \
+    titlesec \
+    fvextra \
+    pdftexcmds \
+    footnotebackref \
+    zref \
+    fontawesome5 \
+    footmisc \
+    sectsty
+
 # download and integrate eisvogel template
 RUN mkdir -p /opt/eisvogel && \
-    echo "${EISVOGEL_VERSION}" >/opt/eisvogel/version \
-    wget -O /opt/eisvogel/eisvogel.tex "https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/v${EISVOGEL_VERSION}/eisvogel.tex" \
-    mkdir -p /root/.pandoc/templates \
-    ln -s /opt/eisvogel/eisvogel.tex /root/.pandoc/templates/eisvogel.tex
+    echo "${EISVOGEL_VERSION}" >/opt/eisvogel/version && \
+    wget -O /opt/eisvogel/eisvogel.tex "https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/v${EISVOGEL_VERSION}/eisvogel.tex" && \
+    mkdir -p /root/.local/share/pandoc/templates && \
+    cp /opt/eisvogel/eisvogel.tex /root/.local/share/pandoc/templates/eisvogel.tex
