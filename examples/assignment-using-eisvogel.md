@@ -12,7 +12,29 @@ Der verschlüsselte Text soll zeilenweise in eine Textdatei geschrieben werden.
 
 Halte dich bei der Implementierung an folgendes Klassendiagramm:
 
-![](oop.polymorphism.cipher/classdiagram.png){ width=80% }
+```{ .plantuml width=100% }
+class TextEncrypter {
+ + TextEncrypter(String outputFile, CipherAlgorithm alg);
+ + void encryptLine(String line, boolean isLastLine);
+}
+
+abstract class CipherAlgorithm {
+   {abstract} + String encrypt(String plainText);
+}
+
+class PlainCipher {
+}
+
+class CaesarCipher {
++ CaesarCipher(int key);
+}
+
+TextEncrypter -right-> "1" CipherAlgorithm
+
+CipherAlgorithm <|-down- PlainCipher
+CipherAlgorithm <|-down- CaesarCipher
+
+```
 
 Die Klasse `TextEncrypter` soll im Konstruktor den Namen der Ausgabedatei erhalten
 und eine Referenz auf eine Implementierung des Verschlüsselungsalgorithmus 
