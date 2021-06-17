@@ -20,7 +20,7 @@ docker run -it -v C:\your\path\here\examples:/data `
            --filter pandoc-plantuml
 ```
 
-#### How to run - Linux
+### How to run - Linux
 
 ```shell
 docker run -it -v /your/path/here/examples:/data \
@@ -38,6 +38,8 @@ this template can be combined with the Plant UML support.
 Note that the stylesheet can be parametrized based on the available
 [Custom Template Variables](https://github.com/Wandmalfarbe/pandoc-latex-template#custom-template-variables).
 
+This template is greate for creating assignment sheets including code samples
+and/or UML diagrams as demonstrated in this [real-world example](assignment-using-eisvogel.pdf).
 
 The most recent template is located in the image at `/opt/eisvogel/eisvogel.tex`.
 One can inspect the file `/opt/eisvogel/version` to check for the included
