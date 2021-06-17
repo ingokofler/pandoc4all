@@ -50,6 +50,9 @@ How to run the examples
 
 Invocation shown based on the example `assignment-using-eisvogel.md`.
 
+Note that the stylesheet can be parametrized based on the available
+[Custom Template Variables](https://github.com/Wandmalfarbe/pandoc-latex-template#custom-template-variables).
+
 Windows Powershell
 
 ```powershell
@@ -57,6 +60,9 @@ docker run -it -v C:\your\path\here\examples:/data `
            pandoc4all `
            assignment-using-eisvogel.md `
            -o assignment-using-eisvogel.pdf `
+           -V header-center="PLF" `
+           --listings `
+           --template eisvogel.tex `
            --filter pandoc-plantuml
 ```
 
@@ -67,13 +73,8 @@ docker run -it -v /your/path/here/examples:/data \
            pandoc4all \
            assignment-using-eisvogel.md \
            -o assignment-using-eisvogel.pdf \
-           --filter pandoc-plantuml
-```
-
-docker run -it -v $(pwd):/data \
-           pandoc4all \
-           assignment-using-eisvogel.md \
-           -o assignment-using-eisvogel.pdf \
            -V header-center="PLF" \
+           --listings \
            --template eisvogel.tex \
            --filter pandoc-plantuml
+```
