@@ -1,5 +1,8 @@
 # Examples
 
+> **_NOTE:_**  The name of the image needs to be adapted and is currently
+> `pandoc4all` in all of the examples.
+
 ## PlantUML Integration
 
 PlantUML diagrams can be integrated directly within Markdown files.
