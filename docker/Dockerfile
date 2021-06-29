@@ -1,6 +1,7 @@
 FROM pandoc/latex
 
 ENV PLANTUML_VERSION=1.2021.4
+ENV REVEALJS_VERSION=4.1.0
 ENV EISVOGEL_VERSION=1.6.0
 
 # python3 py3-pip                 ... for pandoc plantuml filter
@@ -14,6 +15,13 @@ RUN pip3 install pandoc-plantuml-filter
 # download specified version of plantuml
 RUN mkdir -p /opt/plantuml && \
     wget -O /opt/plantuml/plantuml.jar http://sourceforge.net/projects/plantuml/files/plantuml.${PLANTUML_VERSION}.jar/download
+
+# download and extract specified version of reveal.js
+RUN mkdir -p /opt && \
+    wget -O /opt/reveal.js.zip https://github.com/hakimel/reveal.js/archive/refs/tags/${REVEALJS_VERSION}.zip && \
+    unzip /opt/reveal.js.zip -d /opt && \
+    rm /opt/reveal.js.zip && \
+    mv /opt/reveal.js-${REVEALJS_VERSION} /opt/reveal.js
 
 # pandoc filter requires the existence of such a script
 ADD plantuml /usr/bin/plantuml
@@ -50,3 +58,6 @@ RUN mkdir -p /opt/eisvogel && \
     wget -O /opt/eisvogel/eisvogel.tex "https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/v${EISVOGEL_VERSION}/eisvogel.tex" && \
     mkdir -p /root/.local/share/pandoc/templates && \
     cp /opt/eisvogel/eisvogel.tex /root/.local/share/pandoc/templates/eisvogel.tex
+
+# automatically add revealjs-url as variable to pandoc
+ENTRYPOINT ["/usr/local/bin/pandoc", "-V", "revealjs-url:/opt/reveal.js"]

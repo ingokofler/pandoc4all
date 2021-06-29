@@ -30,6 +30,40 @@ docker run -it -v /your/path/here/examples:/data \
            --filter pandoc-plantuml
 ```
 
+## reveal.js
+
+pandoc can also be used to create presentations based on [reveal.js](https://revealjs.com/) based on Markdown syntax. It allows for creating self-contained
+presentations in a single HTML file with the intrinsic simplicity of Markdown.
+
+As an example see the presentation on [Use Case Diagrams](use-case-diagrams.md) and the resulting [HTML presentation](use-case-diagrams.html).
+
+Further examples can be found at <https://github.com/jgm/pandoc/wiki/Using-pandoc-to-produce-reveal.js-slides>.
+
+### How to run - Windows Powershell
+
+```powershell
+docker run -it -v C:\your\path\here\examples:/data `
+           pandoc4all `
+           use-case-diagrams.md `
+           -t revealjs `
+           --section-divs  -V theme=sky -V transition=slide `
+           -s --self-contained `
+           -o use-case-diagrams.html `
+           --filter pandoc-plantuml
+```
+
+### How to run - Linux
+
+```shell
+docker run -it -v /your/path/here/examples:/data \
+           pandoc4all \
+           use-case-diagrams.md \
+           -t revealjs \
+           --section-divs  -V theme=sky -V transition=slide \
+           -s --self-contained \
+           -o use-case-diagrams.html \
+```
+
 ## Included Eisvogel Template
 
 The image comes with the [Eisvogel Pandoc Latex](https://github.com/Wandmalfarbe/pandoc-latex-template) template for rendering.
