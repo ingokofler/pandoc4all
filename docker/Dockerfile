@@ -1,7 +1,7 @@
 FROM pandoc/latex
 
 ENV PLANTUML_VERSION=1.2021.16
-ENV REVEALJS_VERSION=4.1.2
+ENV REVEALJS_VERSION=4.2.1
 ENV EISVOGEL_VERSION=1.6.0
 
 # python3 py3-pip                 ... for pandoc plantuml filter
