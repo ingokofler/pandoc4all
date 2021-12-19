@@ -3,6 +3,56 @@
 > **_NOTE:_**  The name of the image needs to be adapted and is currently
 > `pandoc4all` in all of the examples.
 
+## Thesis support
+
+The image contains all necessary packages to run the PhD thesis template
+provided on [GitHub](https://github.com/tompollard/phd_thesis_markdown).
+
+The only thing that needs to be adapted is to remove the [line that includes the
+`eps` logo file from the title page](https://github.com/tompollard/phd_thesis_markdown/blob/master/style/template.tex#L205).
+
+### How to run - Windows Powershell
+
+```powershell
+# change to a directory of your choice
+cd c:\your\path\here
+
+# get the current thesis
+git clone https://github.com/tompollard/phd_thesis_markdown.git
+
+# remove logo from title page in file style/template.tex
+
+# run an interactive shell in the container
+docker run -it -v C:\your\path\here\phd_thesis_markdown:/data `
+           --entrypoint=/bin/sh `
+           --rm `
+           pandoc4all
+
+# run the make pdf target in the container
+$ make pdf
+```
+
+### How to run - Linux
+
+```shell
+# change to a directory of your choice
+cd /your/path/here
+
+# get the current thesis
+git clone https://github.com/tompollard/phd_thesis_markdown.git
+
+# remove logo from title page in file style/template.tex
+
+# run an interactive shell in the container
+docker run -it -v /your/path/here/phd_thesis_markdown:/data \
+           --entrypoint=/bin/sh \
+           --rm \
+           pandoc4all
+
+# run the make pdf target in the container
+$ make pdf
+```
+
 ## PlantUML Integration
 
 PlantUML diagrams can be integrated directly within Markdown files.

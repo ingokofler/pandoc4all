@@ -7,10 +7,16 @@ ENV EISVOGEL_VERSION=1.6.0
 # python3 py3-pip                 ... for pandoc plantuml filter
 # openjdk11-jre-headless graphviz ... for plantuml
 # fontconfig freetype ttf-dejavu  ... for plantuml as well
-RUN apk add --no-cache python3 py3-pip openjdk11-jre graphviz fontconfig freetype ttf-dejavu
+# make                            ... for the thesis project
+RUN apk add --no-cache python3 py3-pip openjdk11-jre graphviz fontconfig freetype ttf-dejavu make
 
-# install pandoc-plantuml-filter via pip3
-RUN pip3 install pandoc-plantuml-filter
+# some of the pandoc packages require psutil - so install/uninstall all the stuff just to build it
+RUN apk add --no-cache gcc python3-dev musl-dev linux-headers && \
+    pip3 install psutil && \
+    apk del gcc python3-dev musl-dev linux-headers
+
+# install pandoc-plantuml-filter and other packages via pip3
+RUN pip3 install pandoc-plantuml-filter pandoc-eqnos pandoc-tablenos pandoc-secnos pandoc-shortcaption
 
 # download specified version of plantuml
 RUN mkdir -p /opt/plantuml && \
@@ -50,7 +56,17 @@ RUN tlmgr update --self && \
     zref \
     fontawesome5 \
     footmisc \
-    sectsty
+    sectsty \
+    truncate \
+    tocloft \
+    wallpaper \
+    morefloats \
+    siunitx \
+    threeparttable \
+    makecell \
+    bbold \
+    cleveref
+
 
 # download and integrate eisvogel template
 RUN mkdir -p /opt/eisvogel && \
