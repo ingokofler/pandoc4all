@@ -69,7 +69,10 @@ RUN tlmgr update --self && \
     multirow \
     forloop \
     lipsum \
-    courier
+    courier \
+    koma-script \
+    mathtools \
+    pdfpages
 
 # download and integrate eisvogel template
 RUN mkdir -p /opt/eisvogel && \
