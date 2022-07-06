@@ -1,8 +1,8 @@
 FROM pandoc/latex
 
-ENV PLANTUML_VERSION=1.2021.16
-ENV REVEALJS_VERSION=4.2.1
-ENV EISVOGEL_VERSION=1.6.0
+ENV PLANTUML_VERSION=1.2022.6
+ENV REVEALJS_VERSION=4.3.1
+ENV EISVOGEL_VERSION=1.6.1
 
 # python3 py3-pip                 ... for pandoc plantuml filter
 # openjdk11-jre-headless graphviz ... for plantuml
