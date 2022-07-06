@@ -65,8 +65,14 @@ RUN tlmgr update --self && \
     threeparttable \
     makecell \
     bbold \
-    cleveref
-
+    cleveref \
+    multirow \
+    forloop \
+    lipsum \
+    courier \
+    koma-script \
+    mathtools \
+    pdfpages
 
 # download and integrate eisvogel template
 RUN mkdir -p /opt/eisvogel && \
