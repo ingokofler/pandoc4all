@@ -16,7 +16,7 @@ RUN apk add --no-cache gcc python3-dev musl-dev linux-headers && \
     apk del gcc python3-dev musl-dev linux-headers
 
 # install pandoc-plantuml-filter and other packages via pip3
-RUN pip3 install pandoc-plantuml-filter pandoc-eqnos pandoc-tablenos pandoc-secnos pandoc-shortcaption
+RUN pip3 install pandoc-plantuml-filter pandoc-eqnos pandoc-tablenos pandoc-secnos pandoc-fignos pandoc-shortcaption
 
 # download specified version of plantuml
 RUN mkdir -p /opt/plantuml && \
