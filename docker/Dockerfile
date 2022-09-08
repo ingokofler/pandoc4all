@@ -72,7 +72,8 @@ RUN tlmgr update --self && \
     courier \
     koma-script \
     mathtools \
-    pdfpages
+    pdfpages \
+    lineno
 
 # download and integrate eisvogel template
 RUN mkdir -p /opt/eisvogel && \
